@@ -3,15 +3,15 @@ from PIL import Image, ImageDraw
 import numpy as np
 
 class Drawing:
-    def __init__(self, lineColor):
-        self.image = Image.open('image.jpg')
+    def __init__(self, lineColor, image):
+        self.image = Image.open(image)
         self.width, self.height = self.image.size[0], self.image.size[1]
         self.draw = ImageDraw.Draw(self.image)
         self.lineColor = lineColor
 
     def show_image(self):
         plt.imshow(self.image)
-        plt.show()
+        #plt.show()
 
     def save_image(self):
         img = self.image

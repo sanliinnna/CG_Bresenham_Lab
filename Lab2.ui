@@ -207,6 +207,9 @@
        <height>24</height>
       </rect>
      </property>
+     <property name="cursor">
+      <cursorShape>ArrowCursor</cursorShape>
+     </property>
     </widget>
     <widget class="QDoubleSpinBox" name="y1DoubleSpinBox">
      <property name="geometry">
@@ -217,8 +220,11 @@
        <height>24</height>
       </rect>
      </property>
+     <property name="cursor">
+      <cursorShape>ArrowCursor</cursorShape>
+     </property>
     </widget>
-    <widget class="QDoubleSpinBox" name="x2DoubleSpinBox">
+    <widget class="QSpinBox" name="x2SpinBox">
      <property name="geometry">
       <rect>
        <x>70</x>
@@ -226,6 +232,9 @@
        <width>68</width>
        <height>24</height>
       </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>ArrowCursor</cursorShape>
      </property>
     </widget>
     <widget class="QDoubleSpinBox" name="y2DoubleSpinBox">
@@ -236,6 +245,9 @@
        <width>68</width>
        <height>24</height>
       </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>ArrowCursor</cursorShape>
      </property>
     </widget>
    </widget>
@@ -284,6 +296,9 @@
        <height>26</height>
       </rect>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <item>
       <property name="text">
        <string>Line</string>
@@ -324,7 +339,7 @@
       <rect>
        <x>0</x>
        <y>6</y>
-       <width>81</width>
+       <width>41</width>
        <height>16</height>
       </rect>
      </property>
@@ -346,8 +361,24 @@
        <height>32</height>
       </rect>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="text">
       <string>Pick Color</string>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="graphicsView_2">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>5</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="cursor" stdset="0">
+      <cursorShape>ForbiddenCursor</cursorShape>
      </property>
     </widget>
    </widget>
@@ -359,6 +390,9 @@
       <width>113</width>
       <height>32</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
      <string>Draw ellipse</string>
@@ -373,6 +407,9 @@
       <height>32</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="text">
      <string>Save</string>
     </property>
@@ -385,6 +422,9 @@
       <width>113</width>
       <height>32</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
      <string>Erase</string>
