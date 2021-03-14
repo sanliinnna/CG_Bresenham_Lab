@@ -1,4 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QFrame, QColorDialog
+from PyQt5.QtGui import QColor
 
 
 class Ui_MainWindow(object):
@@ -67,18 +69,18 @@ class Ui_MainWindow(object):
         font.setPointSize(15)
         self.endLabel.setFont(font)
         self.endLabel.setObjectName("endLabel")
-        self.x1DoubleSpinBox = QtWidgets.QDoubleSpinBox(self.frame)
-        self.x1DoubleSpinBox.setGeometry(QtCore.QRect(70, 37, 68, 24))
-        self.x1DoubleSpinBox.setObjectName("x1DoubleSpinBox")
-        self.y1DoubleSpinBox = QtWidgets.QDoubleSpinBox(self.frame)
-        self.y1DoubleSpinBox.setGeometry(QtCore.QRect(70, 68, 68, 24))
-        self.y1DoubleSpinBox.setObjectName("y1DoubleSpinBox")
-        self.x2DoubleSpinBox = QtWidgets.QDoubleSpinBox(self.frame)
-        self.x2DoubleSpinBox.setGeometry(QtCore.QRect(70, 130, 68, 24))
-        self.x2DoubleSpinBox.setObjectName("x2DoubleSpinBox")
-        self.y2DoubleSpinBox = QtWidgets.QDoubleSpinBox(self.frame)
-        self.y2DoubleSpinBox.setGeometry(QtCore.QRect(70, 160, 68, 24))
-        self.y2DoubleSpinBox.setObjectName("y2DoubleSpinBox")
+        self.x1SpinBox = QtWidgets.QSpinBox(self.frame)
+        self.x1SpinBox.setGeometry(QtCore.QRect(70, 37, 68, 24))
+        self.x1SpinBox.setObjectName("x1SpinBox")
+        self.y1SpinBox = QtWidgets.QSpinBox(self.frame)
+        self.y1SpinBox.setGeometry(QtCore.QRect(70, 68, 68, 24))
+        self.y1SpinBox.setObjectName("y1SpinBox")
+        self.x2SpinBox = QtWidgets.QSpinBox(self.frame)
+        self.x2SpinBox.setGeometry(QtCore.QRect(70, 130, 68, 24))
+        self.x2SpinBox.setObjectName("x2SpinBox")
+        self.y2SpinBox = QtWidgets.QSpinBox(self.frame)
+        self.y2SpinBox.setGeometry(QtCore.QRect(70, 160, 68, 24))
+        self.y2SpinBox.setObjectName("y2SpinBox")
         self.frame_2 = QtWidgets.QFrame(self.centralwidget)
         self.frame_2.setGeometry(QtCore.QRect(30, 50, 270, 61))
         self.frame_2.setFrameShape(QtWidgets.QFrame.NoFrame)
@@ -158,6 +160,13 @@ class Ui_MainWindow(object):
         self.erasePushButton.setDisabled(True)
         self.comboBox.activated[str].connect(self.onChanged_comboBox)
 
+        self.x1SpinBox.setRange(0, 1000)
+        self.y1SpinBox.setRange(0, 1000)
+        self.x2SpinBox.setRange(0, 1000)
+        self.y2SpinBox.setRange(0, 1000)
+
+        self.colorPushButton.clicked.connect(self.pick_Color)
+
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -189,7 +198,7 @@ class Ui_MainWindow(object):
         self.x2Label.setStyleSheet("#x2Label { font-size: 13pt;}")
         self.y2Label.setStyleSheet("#x2Label { font-size: 13pt;}")
         self.y2Label.show()
-        self.y2DoubleSpinBox.show()
+        self.y2SpinBox.show()
         if text == "Line":
             self.frame.setDisabled(False)
             self.frame_3.setDisabled(False)
@@ -205,7 +214,7 @@ class Ui_MainWindow(object):
             self.endLabel.setText("Circle radius")
             self.x2Label.setText("r")
             self.y2Label.hide()
-            self.y2DoubleSpinBox.hide()
+            self.y2SpinBox.hide()
             self.drawPushButton.setText("Draw circle")
         elif text == "Ellipse":
             self.startLabel.setText("Center point")
@@ -217,12 +226,19 @@ class Ui_MainWindow(object):
             self.y2Label.setText("semi-minor")
             self.y2Label.show()
             self.y2Label.setStyleSheet("#y2Label { font-size: 10pt;}")
-            self.y2DoubleSpinBox.show()
+            self.y2SpinBox.show()
             self.drawPushButton.setText("Draw ellipse")
         else:
             self.frame.setDisabled(True)
             self.frame_3.setDisabled(True)
             self.drawPushButton.hide()
+
+    def pick_Color(self):
+        color = QColorDialog.getColor()
+        color_rgb = color.getRgb()
+        print(color_rgb)
+        # if col.isValid():
+        #     self.frm.setStyleSheet('QWidget { background-color: %s }' % col.name())
 
 
 if __name__ == "__main__":
