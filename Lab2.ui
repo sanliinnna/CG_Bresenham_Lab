@@ -116,21 +116,11 @@
       <string>Start point</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="y1LineEdit">
-     <property name="geometry">
-      <rect>
-       <x>70</x>
-       <y>68</y>
-       <width>71</width>
-       <height>21</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QLabel" name="x1Label">
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>40</y>
+       <y>39</y>
        <width>60</width>
        <height>20</height>
       </rect>
@@ -158,21 +148,11 @@
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
-    <widget class="QLineEdit" name="x2LineEdit">
-     <property name="geometry">
-      <rect>
-       <x>70</x>
-       <y>130</y>
-       <width>71</width>
-       <height>21</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QLabel" name="x2Label">
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>132</y>
+       <y>130</y>
        <width>60</width>
        <height>20</height>
       </rect>
@@ -182,16 +162,6 @@
      </property>
      <property name="alignment">
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="y2LineEdit">
-     <property name="geometry">
-      <rect>
-       <x>70</x>
-       <y>160</y>
-       <width>71</width>
-       <height>21</height>
-      </rect>
      </property>
     </widget>
     <widget class="QLabel" name="y2Label">
@@ -228,13 +198,43 @@
       <string>End point</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="x1LineEdit">
+    <widget class="QDoubleSpinBox" name="x1DoubleSpinBox">
      <property name="geometry">
       <rect>
        <x>70</x>
-       <y>38</y>
-       <width>71</width>
-       <height>21</height>
+       <y>37</y>
+       <width>68</width>
+       <height>24</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QDoubleSpinBox" name="y1DoubleSpinBox">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>68</y>
+       <width>68</width>
+       <height>24</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QDoubleSpinBox" name="x2DoubleSpinBox">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>130</y>
+       <width>68</width>
+       <height>24</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QDoubleSpinBox" name="y2DoubleSpinBox">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>160</y>
+       <width>68</width>
+       <height>24</height>
       </rect>
      </property>
     </widget>
@@ -348,34 +348,6 @@
      </property>
      <property name="text">
       <string>Pick Color</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="lineWidthLabel">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>37</y>
-       <width>81</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>15</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Line width</string>
-     </property>
-    </widget>
-    <widget class="QDoubleSpinBox" name="doubleSpinBox">
-     <property name="geometry">
-      <rect>
-       <x>86</x>
-       <y>32</y>
-       <width>64</width>
-       <height>24</height>
-      </rect>
      </property>
     </widget>
    </widget>
