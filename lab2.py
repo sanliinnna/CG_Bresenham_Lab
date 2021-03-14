@@ -2,6 +2,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QFrame, QColorDialog
 from PyQt5.QtGui import QColor
 from drawing import Drawing
+import matplotlib.pyplot as plt
+from PIL import Image, ImageDraw 
+import numpy as np
 
 
 class Ui_MainWindow(object):
@@ -174,6 +177,7 @@ class Ui_MainWindow(object):
         self.y2SpinBox.setRange(0, 400)
         self.colorPushButton.clicked.connect(self.pick_Color)
         self.drawPushButton.clicked.connect(self.drawButton_clicked)
+        self.erasePushButton.clicked.connect(self.eraseButton_clicked)
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -252,6 +256,7 @@ class Ui_MainWindow(object):
             self.pickedColorLabel.hide()
 
     def drawButton_clicked(self):
+        self.erasePushButton.setDisabled(False)
         self.draft = "new_image.jpg"
         d = Drawing(self.color_rgb, str(self.draft))
         if self.text == "Line":
@@ -266,6 +271,13 @@ class Ui_MainWindow(object):
         d.save_image()  
         self.graphicsView.setStyleSheet("background-image: url(new_image.jpg);")
         print("clicked")
+
+
+    def eraseButton_clicked(self):
+        self.draft = Image.open("image.jpg")
+        self.draft = self.draft.save("new_image.jpg")
+        self.graphicsView.setStyleSheet("background-image: url(new_image.jpg);")
+        self.erasePushButton.setDisabled(True)
 
 if __name__ == "__main__":
     import sys
