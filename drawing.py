@@ -104,7 +104,6 @@ class Drawing:
         b1 = 8* b* b
 
         while(x0 <= x1):
-
             self.draw.point((x1, y0), fill = self.lineColor)
             self.draw.point((x0, y0), fill = self.lineColor)
             self.draw.point((x0, y1), fill = self.lineColor)
@@ -128,15 +127,3 @@ class Drawing:
             self.draw.point((x1 + 1, y0 + 1), fill = self.lineColor)
             self.draw.point((x0 - 1, y1), fill = self.lineColor)
             self.draw.point((x1 + 1, y1 - 1), fill = self.lineColor)  
-
-def main():
-    color = (255,3,2,128)
-    drawer = Drawing(color)
-    drawer.draw_line(50, 50, 250, 250)
-    drawer.draw_circle(drawer.width / 2, drawer.height / 2, 125)
-    drawer.draw_ellipse(10, 50, 290, 250)   
-    drawer.save_image()  
-    drawer.show_image()     
-        
-if __name__ == '__main__':
-    main()

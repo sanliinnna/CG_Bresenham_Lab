@@ -1,5 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QFrame, QColorDialog
+from PyQt5.QtWidgets import QApplication, QFileDialog, QWidget, QPushButton, QFrame, QColorDialog
 from PyQt5.QtGui import QColor
 from drawing import Drawing
 import matplotlib.pyplot as plt
@@ -38,6 +38,8 @@ class Ui_MainWindow(object):
         self.graphicsView.setGeometry(QtCore.QRect(320, 10, 400, 400))
         self.graphicsView.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.graphicsView.setFrameShadow(QtWidgets.QFrame.Plain)
+        self.draft = Image.open("image.jpg")
+        self.draft = self.draft.save("new_image.jpg")
         self.graphicsView.setObjectName("graphicsView")
         self.frame = QtWidgets.QFrame(self.centralwidget)
         self.frame.setGeometry(QtCore.QRect(30, 120, 270, 201))
@@ -130,12 +132,11 @@ class Ui_MainWindow(object):
         self.drawPushButton = QtWidgets.QPushButton(self.centralwidget)
         self.drawPushButton.setGeometry(QtCore.QRect(24, 415, 113, 32))
         self.drawPushButton.setObjectName("drawPushButton")
-        self.savePushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.savePushButton.setGeometry(QtCore.QRect(613, 415, 113, 32))
-        self.savePushButton.setObjectName("savePushButton")
+
         self.erasePushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.erasePushButton.setGeometry(QtCore.QRect(493, 415, 113, 32))
+        self.erasePushButton.setGeometry(QtCore.QRect(613, 415, 113, 32))
         self.erasePushButton.setObjectName("erasePushButton")
+
         self.line_2 = QtWidgets.QFrame(self.centralwidget)
         self.line_2.setGeometry(QtCore.QRect(30, 110, 270, 16))
         self.line_2.setFrameShape(QtWidgets.QFrame.HLine)
@@ -168,7 +169,6 @@ class Ui_MainWindow(object):
         self.frame.setDisabled(True)
         self.frame_3.setDisabled(True)
         self.drawPushButton.hide()
-        self.savePushButton.setDisabled(True)
         self.erasePushButton.setDisabled(True)
         self.comboBox.activated[str].connect(self.onChanged_comboBox)
         self.x1SpinBox.setRange(0, 400)
@@ -178,7 +178,7 @@ class Ui_MainWindow(object):
         self.colorPushButton.clicked.connect(self.pick_Color)
         self.drawPushButton.clicked.connect(self.drawButton_clicked)
         self.erasePushButton.clicked.connect(self.eraseButton_clicked)
-
+        
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -199,7 +199,6 @@ class Ui_MainWindow(object):
         self.colorLabel.setText(_translate("MainWindow", "Color"))
         self.colorPushButton.setText(_translate("MainWindow", "Pick Color"))
         self.drawPushButton.setText(_translate("MainWindow", "Draw"))
-        self.savePushButton.setText(_translate("MainWindow", "Save"))
         self.erasePushButton.setText(_translate("MainWindow", "Erase"))
         self.title.setText(_translate("MainWindow", "Bresenham algorithms"))
 
@@ -229,15 +228,13 @@ class Ui_MainWindow(object):
             self.y2SpinBox.hide()
             self.drawPushButton.setText("Draw circle")
         elif self.text == "Ellipse":
-            self.startLabel.setText("Center point")
+            self.startLabel.setText("Start points")
             self.frame.setDisabled(False)
             self.frame_3.setDisabled(False)
-            self.endLabel.setText("Ellipse axes")
-            self.x2Label.setText("semi-major")
-            self.x2Label.setStyleSheet("#x2Label { font-size: 10pt;}")
-            self.y2Label.setText("semi-minor")
+            self.endLabel.setText("End points( > Start points)")
+            self.x2Label.setText("X")
+            self.y2Label.setText("Y")
             self.y2Label.show()
-            self.y2Label.setStyleSheet("#y2Label { font-size: 10pt;}")
             self.y2SpinBox.show()
             self.drawPushButton.setText("Draw ellipse")
         else:
@@ -257,10 +254,10 @@ class Ui_MainWindow(object):
 
     def drawButton_clicked(self):
         self.erasePushButton.setDisabled(False)
+    
         self.draft = "new_image.jpg"
         d = Drawing(self.color_rgb, str(self.draft))
         if self.text == "Line":
-            print(self.x1SpinBox.value())
             d.draw_line(self.x1SpinBox.value(),self.y1SpinBox.value(),self.x2SpinBox.value(),self.y2SpinBox.value()) 
 
         elif self.text == "Circle":
